@@ -2,7 +2,7 @@ import createDataContext from "./createDataContext";
 import appApi from "../api/appApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { navigate } from "../navigationRef";
-import { CHECK_VALID_PASSWORD } from "../../enviroment";
+import { CHECK_VALID_PASSWORD } from "../../enviroment/index";
 
 const authReducer = (state, action) => {
   switch (action.type) {
