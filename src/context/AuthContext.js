@@ -4,6 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { navigate } from "../navigationRef";
 import { CHECK_VALID_PASSWORD } from "../../enviroment/index";
 
+const DEFAULT_PAGE_AFTER_LOGIN = "TrackList";
+
 const authReducer = (state, action) => {
   switch (action.type) {
     case "addToken": //log in
@@ -23,7 +25,7 @@ const signUp = (dispatch) => async (email, password) => {
       type: "addToken",
       payload: response.data.token,
     });
-    navigate("TrackList"); // page to go to after auth / sign up
+    navigate(DEFAULT_PAGE_AFTER_LOGIN); // page to go to after auth / sign up
   } catch (err) {
     dispatch({
       type: "addError",
@@ -40,7 +42,7 @@ const signIn = (dispatch) => async (email, password) => {
       type: "addToken",
       payload: response.data.token,
     });
-    navigate("TrackList");
+    navigate(DEFAULT_PAGE_AFTER_LOGIN);
   } catch (err) {
     dispatch({
       type: "addError",
@@ -64,7 +66,7 @@ const tryLocalSignin = (dispatch) => async () => {
       type: "addToken",
       payload: { token },
     });
-    navigate("TrackList");
+    navigate(DEFAULT_PAGE_AFTER_LOGIN);
   }
   return null;
 };
